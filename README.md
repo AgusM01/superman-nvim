@@ -74,6 +74,12 @@ require("superman").setup({
 
 Tip: change `system` to make it a general dictionary, answer in another language, or keep answers shorter.
 
+## TO-DO (Maybe you can do it)
+
+### If you solve one, please delete it from here :).
+
+* Support for other AI enterprises (OpenAI, Gemini, ...)
+
 ## License
 
 MIT
