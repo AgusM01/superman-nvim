@@ -29,6 +29,11 @@ local function show(text)
     style = "minimal", border = "rounded", title = " " .. M.config.result_title .. " ",
   })
   vim.wo[win].wrap = true
+  vim.wo[win].linebreak = true -- wrap at word boundaries
+  -- Render the Markdown answer without the raw ** and ``` markers,
+  -- also on the line the cursor is on
+  vim.wo[win].conceallevel = 2
+  vim.wo[win].concealcursor = "n"
   vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf })
   vim.keymap.set("n", "<CR>", "<cmd>close<cr>", { buffer = buf })
 
@@ -37,7 +42,10 @@ local function show(text)
     if not vim.api.nvim_win_is_valid(win) then return end
     local lines = vim.split(new_text, "\n")
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-    local h = math.max(1, math.min(#lines, math.floor(vim.o.lines * M.config.result_max_height)))
+    -- Size by screen lines, not buffer lines: a long paragraph wraps into
+    -- several rows and would otherwise be cut off
+    local rows = vim.api.nvim_win_text_height(win, {}).all
+    local h = math.max(1, math.min(rows, math.floor(vim.o.lines * M.config.result_max_height)))
     vim.api.nvim_win_set_config(win, {
       relative = "editor", width = w, height = h,
       row = math.floor((vim.o.lines - h - 2) / 2), col = math.floor((vim.o.columns - w) / 2),
