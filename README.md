@@ -2,6 +2,8 @@
 
 A tiny "super `man`" for Neovim: press a key, type a word, and Claude tells you what it means — right inside a floating window.
 
+![superman.nvim looking up hmac.compare_digest under the cursor, then "timing attack" typed in the prompt](docs/demo.gif)
+
 ```
 ╭ What does it mean? ─────────────────────╮
 │ debounce                                │
@@ -29,7 +31,7 @@ export ANTHROPIC_API_KEY="sk-ant-..."
 
 ```lua
 {
-  "<your-github-user>/superman.nvim",
+  "AgusM01/superman-nvim",
   cmd = "Superman",
   opts = {},
   keys = {
