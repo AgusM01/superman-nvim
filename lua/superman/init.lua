@@ -6,7 +6,7 @@ M.config = {
   max_tokens = 1000,
   -- Name of the environment variable that holds the Anthropic API key
   api_key_env = "ANTHROPIC_API_KEY",
-  system = "You are a technical software dictionary for developers. When given a word, term, function name or concept, reply in English with a concise definition, a short usage example in code if relevant.",
+  system = "You are a technical software dictionary for developers. When given a word, term, function name or concept, reply in English with a concise definition, a short usage example in code if relevant. If it is a function, explain it's return value.",
   prompt_title = "What does it mean?",
   result_title = "superman",
   -- Window sizes as a fraction of the editor
